@@ -1,0 +1,188 @@
+{
+    "name": "BLOCK EX",
+    "appid": "__UNI__92ACE0F",
+    "description": "",
+    "versionName": "1.0.2",
+    "versionCode": 120,
+    "transformPx": false,
+    "app-plus": {
+        "usingComponents": true,
+        "splashscreen": {
+            "alwaysShowBeforeRender": true,
+            "waiting": true,
+            "autoclose": true,
+            "delay": 0
+        },
+        "bottom": "0",
+        "contentAdjust": false,
+        "bounce": "none",
+        "safearea": {
+            "bottom": "none"
+        },
+        "compatible": {
+            "ignoreVersion": true
+        },
+        "modules": {},
+        "distribute": {
+            "android": {
+                "permissions": [
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.INSTALL_PACKAGES\"/>",
+                    "<uses-permission android:name=\"android.permission.REQUEST_INSTALL_PACKAGES\"/>"
+                ]
+            },
+            "ios": {
+                "urltypes": [
+                    {
+                        "urlidentifier": "1042156138369-vbnud03lj2dp9c7k3jp1b3snkav65uj4.apps.googleusercontent.com",
+                        "urlschemes": [
+                            "com.googleusercontent.apps.1042156138369-vbnud03lj2dp9c7k3jp1b3snkav65uj4"
+                        ]
+                    }
+                ]
+            },
+            "sdkConfigs": {
+                "ad": {}
+            },
+            "icons": {
+                "android": {
+                    "hdpi": "unpackage/res/icons/72x72.png",
+                    "xhdpi": "unpackage/res/icons/96x96.png",
+                    "xxhdpi": "unpackage/res/icons/144x144.png",
+                    "xxxhdpi": "unpackage/res/icons/192x192.png"
+                },
+                "ios": {
+                    "appstore": "unpackage/res/icons/1024x1024.png",
+                    "ipad": {
+                        "app": "unpackage/res/icons/76x76.png",
+                        "app@2x": "unpackage/res/icons/152x152.png",
+                        "notification": "unpackage/res/icons/20x20.png",
+                        "notification@2x": "unpackage/res/icons/40x40.png",
+                        "proapp@2x": "unpackage/res/icons/167x167.png",
+                        "settings": "unpackage/res/icons/29x29.png",
+                        "settings@2x": "unpackage/res/icons/58x58.png",
+                        "spotlight": "unpackage/res/icons/40x40.png",
+                        "spotlight@2x": "unpackage/res/icons/80x80.png"
+                    },
+                    "iphone": {
+                        "app@2x": "unpackage/res/icons/120x120.png",
+                        "app@3x": "unpackage/res/icons/180x180.png",
+                        "notification@2x": "unpackage/res/icons/40x40.png",
+                        "notification@3x": "unpackage/res/icons/60x60.png",
+                        "settings@2x": "unpackage/res/icons/58x58.png",
+                        "settings@3x": "unpackage/res/icons/87x87.png",
+                        "spotlight@2x": "unpackage/res/icons/80x80.png",
+                        "spotlight@3x": "unpackage/res/icons/120x120.png"
+                    }
+                }
+            },
+            "splashscreen": {
+                "androidStyle": "common",
+                "iosStyle": "common",
+                "android": {
+                    "hdpi": "unpackage/res/cover/cover.png",
+                    "xhdpi": "unpackage/res/cover/cover.png",
+                    "xxhdpi": "unpackage/res/cover/cover.png"
+                },
+                "ios": {
+                    "iphone": {
+                        "portrait-896h@3x": "unpackage/res/cover/cover.png",
+                        "portrait-896h@2x": "unpackage/res/cover/cover.png",
+                        "iphonex": "unpackage/res/cover/cover.png",
+                        "retina55": "unpackage/res/cover/cover.png",
+                        "retina47": "unpackage/res/cover/cover.png",
+                        "retina40": "unpackage/res/cover/cover.png",
+                        "retina35": "unpackage/res/cover/cover.png"
+                    }
+                }
+            }
+        },
+        "nativePlugins": {
+            "JY-GoogleSignin": {
+                "__plugin_info__": {
+                    "name": "JY-GoogleSignin 谷歌登录 支持安卓iOS",
+                    "description": "谷歌登录，一键支持",
+                    "platforms": "Android,iOS",
+                    "url": "https://ext.dcloud.net.cn/plugin?id=2244",
+                    "android_package_name": "uni.UNI9DAF7E8",
+                    "ios_bundle_id": "uni.UNI9DAF7E8",
+                    "isCloud": true,
+                    "bought": 1,
+                    "pid": "2244",
+                    "parameters": {}
+                }
+            }
+        }
+    },
+    "quickapp": {},
+    "mp-weixin": {
+        "appid": "",
+        "setting": {
+            "urlCheck": false
+        },
+        "usingComponents": true
+    },
+    "mp-alipay": {
+        "usingComponents": true
+    },
+    "mp-baidu": {
+        "usingComponents": true
+    },
+    "mp-toutiao": {
+        "usingComponents": true,
+        "uniStatistics": {
+            "enable": false
+        }
+    },
+    "mp-qq": {
+        "usingComponents": true
+    },
+    "h5": {
+        "title": "BLOCK EX",
+        "optimization": {
+            "treeShaking": {
+                "enable": true
+            }
+        },
+        "devServer": {
+            "disableHostCheck": true,
+            "proxy": {
+                "/api": {
+                    "target": "https://blockexcom.pro",
+                    "changeOrigin": true,
+                    "secure": false
+                },
+                "/uploads": {
+                    "target": "https://blockexcom.pro",
+                    "changeOrigin": true,
+                    "secure": false
+                }
+            },
+            "https": false
+        },
+        "router": {
+            "mode": "hash",
+            "base": "./"
+        }
+    }
+}
