@@ -14,7 +14,10 @@
     "uniapp",
     "version"
   ],
-  "author": "nicolanazwj@gmail.com",
+  "author": {
+    "name": "Nicolana",
+    "email": "nicolanazwj@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "chalk": "^4.1.2",

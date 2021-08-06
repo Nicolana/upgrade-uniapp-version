@@ -2,7 +2,7 @@ var fs = require("fs");
 var chalk = require("chalk");
 var child_process = require("child_process");
 const manifest_name = "manifest.json"
-const manifest_path = __dirname + `\\${manifest_name}`;
+const manifest_path = __dirname + `\\src\\${manifest_name}`;
 var cmd = require('node-cmd');
 
 console.log( __filename);
@@ -34,7 +34,7 @@ function runAddToGit(version, tag) {
         console.log(data, stderr)
     })
     cmd.run(`npm version ${tag} && git push && git push --tags`, (err, data, stderr) => {
-        console.log(data, chalk.red(stderr))
+        console.log(data, chalk.yellow(stderr))
     })
     console.log('Git: ' + chalk.yellow(`V${old_version}`) + "->" + chalk.green(`V${version} updated and commited successfully!!`))
 }
