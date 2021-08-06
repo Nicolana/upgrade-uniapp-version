@@ -3,6 +3,7 @@ var chalk = require("chalk");
 var child_process = require("child_process");
 const manifest_name = "manifest.json"
 const manifest_path = __dirname + `\\${manifest_name}`;
+var cmd = require('node-cmd');
 
 console.log( __filename);
 console.log( __dirname );
@@ -29,8 +30,12 @@ function upgrade(version, tag) {
 }
 
 function runAddToGit(version, tag) {
-    child_process.exec(`git add . && git commit -m "update ${manifest_name} version to ${version}"`)
-    child_process.exec(`npm version ${tag}; git push; git push --tags`)
+    cmd.run(`git add . && git commit -m "update ${manifest_name} version to ${version}"`, (err, data, stderr) => {
+        console.log(data, stderr)
+    })
+    cmd.run(`npm version ${tag} && git push && git push --tags`, (err, data, stderr) => {
+        console.log(data, chalk.red(stderr))
+    })
     console.log('Git: ' + chalk.yellow(`V${old_version}`) + "->" + chalk.green(`V${version} updated and commited successfully!!`))
 }
 

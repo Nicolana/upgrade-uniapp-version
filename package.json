@@ -18,6 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "chalk": "^4.1.2",
-    "jsonfile": "^6.1.0"
+    "jsonfile": "^6.1.0",
+    "node-cmd": "^5.0.0"
   }
 }
