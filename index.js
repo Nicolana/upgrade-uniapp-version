@@ -32,7 +32,7 @@ function runAddToGit(version, tag) {
     child_process.exec(`git add . && git commit -m "update ${manifest_name} version to ${version}"`)
     child_process.exec(`npm version ${tag}`)
     console.log('Git: ' + chalk.yellow(`V${old_version}`) + "->" + chalk.green(`V${version} updated and commited successfully!!`))
-    child_process.exec("git push; git push --tags")
+    child_process.exec("git push")
 }
 
 function main () {
