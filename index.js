@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 var fs = require("fs");
 var chalk = require("chalk");
 var child_process = require("child_process");
