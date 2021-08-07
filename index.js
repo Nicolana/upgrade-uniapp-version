@@ -4,7 +4,8 @@ var fs = require("fs");
 var chalk = require("chalk");
 var child_process = require("child_process");
 const manifest_name = "manifest.json"
-const manifest_path = __dirname + `\\src\\${manifest_name}`;
+const { resolve } = require('path')
+const manifest_path = resolve('./') + `\\src\\${manifest_name}`;
 var cmd = require('node-cmd');
 
 console.log( __filename);
