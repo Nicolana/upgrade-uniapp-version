@@ -8,8 +8,6 @@ const { resolve } = require('path')
 const manifest_path = resolve('./') + `\\${manifest_name}`;
 var cmd = require('node-cmd');
 
-console.log(resolve('./'))
-
 let old_version = "";
 
 function upgrade(version, tag) {
@@ -49,7 +47,6 @@ function main () {
         }
         data = data.replace(/\/\*[\s\S]*?\*\//g, '')
         let dt = JSON.parse(data)
-        console.log('Old Version: ' + chalk.yellow(`V${dt.versionName}`))
         old_version = dt.versionName;
         if (process.argv.length > 2) {
             let tag = process.argv[2]
