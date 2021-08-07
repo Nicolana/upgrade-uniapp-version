@@ -5,7 +5,7 @@ var chalk = require("chalk");
 var child_process = require("child_process");
 const manifest_name = "manifest.json"
 const { resolve } = require('path')
-const manifest_path = resolve('./') + `\\${manifest_name}`;
+const manifest_path = resolve('./') + `\\src\\${manifest_name}`;
 var cmd = require('node-cmd');
 
 let old_version = "";
