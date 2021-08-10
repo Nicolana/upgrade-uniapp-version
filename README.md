@@ -17,13 +17,14 @@
 例如：`1.9.1 -> 1.10.0 -> 1.11.0`
 
 ## 安装
-
+需要进行全局安装，
 ```
-npm install -D upgrade-uniapp-version
+npm install -g upgrade-uniapp-version
 ```
 
 ## 配置及使用
 
 ```
-
+uni-version <patch|minor|major>
 ```
+
