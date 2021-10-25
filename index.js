@@ -10,6 +10,8 @@ var cmd = require('node-cmd');
 
 let old_version = "";
 
+const args = process.argv.slice(2)
+
 function upgrade(version, tag) {
     version = version.split('.')
     switch (tag) {
@@ -30,7 +32,7 @@ function upgrade(version, tag) {
 }
 
 function runAddToGit(version, tag) {
-    cmd.run(`git add . && git commit -m "update ${manifest_name} version to ${version}"`, (err, data, stderr) => {
+    cmd.run(`git add . && git commit -m "update ${manifest_name} version to ${version}" ${args.join(" ")}`, (err, data, stderr) => {
         console.log(data, stderr)
     })
     cmd.run(`npm version ${tag} && git push && git push --tags`, (err, data, stderr) => {
