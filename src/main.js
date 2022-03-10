@@ -92,7 +92,7 @@ function upgradePackage(upgradeType) {
   })
 }
 
-module.exports = ({ type: upgradeType, hooks, }) => {
+module.exports = ({ upgrade: upgradeType, hooks, }) => {
   return new Promise((resolve, reject) => {
     Promise.allSettled([upgradeManifest(upgradeType), upgradePackage(upgradeType)]).then(res => {
       const [retData] = res; // 获取manifest升级成功与否的消息
