@@ -1,40 +1,40 @@
 {
-  "name": "upgrade-uniapp-version"
-  "version": "1.0.13"
-  "description": "Automatically update the version number of uni-app project, then tag and push to the server of Git"
-  "main": "index.js"
+  "name": "upgrade-uniapp-version",
+  "version": "1.0.13",
+  "description": "Automatically update the version number of uni-app project, then tag and push to the server of Git",
+  "main": "index.js",
   "scripts":
   {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
   "repository":
   {
-    "type": "git"
+    "type": "git",
     "url": "git+ssh://git@github.com:Nicolana/upgrade-uniapp-version.git"
-  }
+  },
   "keywords":
   [
-    "uniapp"
+    "uniapp",
     "version"
-  ]
+  ],
   "author":
   {
-    "name": "Nicolana"
+    "name": "Nicolana",
     "email": "nicolanazwj@gmail.com"
-  }
-  "license": "ISC"
+  },
+  "license": "ISC",
   "dependencies":
   {
-    "chalk": "^4.1.2"
-    "jsonfile": "^6.1.0"
+    "chalk": "^4.1.2",
+    "jsonfile": "^6.1.0",
     "node-cmd": "^5.0.0"
-  }
+  },
   "devDependencies":
   {
-  }
+  },
   "bin":
   {
     "uni-version": "index.js"
-  }
+  },
   "homepage": "https://github.com/Nicolana/upgrade-uniapp-version#readme"
 }
