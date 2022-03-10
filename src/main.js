@@ -10,6 +10,8 @@ const manifestFileName = "manifest.json";
 const manifestFilePaths = [`${rootPath}/src/${manifestFileName}`, `${rootPath}/${manifestFileName}`];
 const packagePath = `${rootPath}/package.json`;
 
+Hjson.setEndOfLine('\r\n');
+
 function upgrade(version, tag) {
   version = version.split('.')
   switch (tag) {
@@ -55,12 +57,12 @@ function upgradeManifest (upgradeType) {
     getManifestFilePath().then(manifestPath => {
       // 获取manifest接口
       const rawData = fs.readFileSync(manifestPath, { encoding: 'utf8' });
-      const manifestData = Hjson.rt.parse(rawData); // 解析JSON文件并保留字符串
+      const manifestData = Hjson.parse(rawData, { keepWsc: true }); // 解析JSON文件并保留字符串
       const oldVersion = manifestData.versionName;
       manifestData.versionName = upgrade(manifestData.versionName, upgradeType);
       console.log(manifestData)
       try {
-        fs.writeFileSync(manifestPath, Hjson.rt.stringify(manifestData))
+        fs.writeFileSync(manifestPath, Hjson.stringify(manifestData, { keepWsc: true, quotes: "all" }))
       } catch (err) {
         log.error(err)
         reject(err)
@@ -81,11 +83,11 @@ function upgradePackage(upgradeType) {
       reject()
     }
     const rawData = fs.readFileSync(packagePath, { encoding: 'utf8' });
-    const packageData = Hjson.parse(rawData);
+    const packageData = Hjson.parse(rawData, { keepWsc: true });
     console.log(packageData);
     const oldVersion = packageData.version;
     packageData.version = upgrade(oldVersion, upgradeType);
-    fs.writeFileSync(packagePath, Hjson.rt.stringify(packageData))
+    fs.writeFileSync(packagePath, Hjson.stringify(packageData, { keepWsc: true, quotes: "all" }))
     log.log(`package.json文件版本从 ${chalk.green(oldVersion)} 升级至 ${chalk.green(packageData.version)}`)
     resolve(packageData.version)
   })
