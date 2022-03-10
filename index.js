@@ -1,70 +1,36 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
-var fs = require("fs");
-var chalk = require("chalk");
-var child_process = require("child_process");
-const manifest_name = "manifest.json"
-const { resolve } = require('path')
-const manifest_path = resolve('./') + `/src/${manifest_name}`;
-var cmd = require('node-cmd');
+const { program } = require('commander');
+const upgrade = require('./src/main');
+const pkg = require('./package.json');
+const chalk = require("chalk");
 
-let old_version = "";
+program
+  .option('-u, --upgrade <type>', `
+  SemVer规范的标准版本号采用 X.Y.Z 的格式，其中 X、Y 和 Z 为非负的整数，且禁止在数字前方补零。X 是主版本号、Y 是次版本号、而 Z 为修订号。每个元素必须以数值来递增。
+  
+    主版本号(major)：当你做了不兼容的API 修改
+    次版本号(minor)：当你做了向下兼容的功能性新增
+    修订号(patch)：当你做了向下兼容的问题修正。
 
-const args = process.argv.slice(2)
+  例如：1.9.1 -> 1.10.0 -> 1.11.0
+  `)
+  .option('--no-hooks', '绕过Git的hooks')
+  .action((options) => {
+      upgrade(options).then(() => { console.log(); }).catch(() => {
+         process.exit(1);
+      });
+  })
 
-function upgrade(version, tag) {
-    version = version.split('.')
-    switch (tag) {
-        case 'patch':
-            version[2] = Number(version[2]) + 1
-            break
-        case 'minor':
-            version[2] = "0"
-            version[1] = Number(version[1]) + 1
-            break
-        case 'major':
-            version[1] = "0"
-            version[2] = "0"
-            version[0] = String(Number(version[0]) + 1)
-            break
-    }
-    return version.join('.')
+program
+  .version(pkg.version)
+  .description(chalk.blue("升级 Uni-App 版本从未如此简单！"))
+console.log();
+
+//默认展示帮助信息
+if (process.argv && process.argv.length < 2) {
+    program.help();
 }
 
-function runAddToGit(version, tag) {
-    cmd.run(`git add . && git commit -m "update ${manifest_name} version to ${version}" ${args.join(" ")}`, (err, data, stderr) => {
-        console.log(data, stderr)
-    })
-    cmd.run(`npm version ${tag} && git push && git push --tags`, (err, data, stderr) => {
-        console.log(data, chalk.yellow(stderr))
-    })
-    console.log('Git: ' + chalk.yellow(`V${old_version}`) + "->" + chalk.green(`V${version} updated and commited successfully!!`))
-}
-
-function main () {
-    fs.readFile(manifest_path, 'utf8', (err, data) => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        data = data.replace(/\/\*[\s\S]*?\*\//g, '')
-        let dt = JSON.parse(data)
-        old_version = dt.versionName;
-        if (process.argv.length > 2) {
-            let tag = process.argv[2]
-            dt.versionName = upgrade(dt.versionName, tag)
-            fs.writeFile(manifest_path, JSON.stringify(dt, null, 4), err => {
-                if (err) {
-                    console.error(err)
-                    return
-                }
-                runAddToGit(dt.versionName, tag)
-            })
-            return
-        } else {
-            throw "err: 缺少参数"
-        }
-    })
-}
-
-main()
+// 接管命令行输入，参数处理
+program.parse(process.argv);
