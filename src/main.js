@@ -55,10 +55,6 @@ function getManifestFilePath() {
 function upgradeManifest (upgradeType) {
   console.log("upgradeType = ", upgradeType)
   return new Promise((resolve, reject) => {
-    if (!upgradeType) {
-      log.error("升级失败，请使用命令 uni-version -u <patch|minor|major> 进行升级")
-      reject()
-    }
     getManifestFilePath().then(manifestPath => {
       // 获取manifest接口
       const rawData = fs.readFileSync(manifestPath, { encoding: 'utf8' });
@@ -98,6 +94,10 @@ function upgradePackage(upgradeType) {
 
 module.exports = ({ upgrade: upgradeType, hooks, }) => {
   return new Promise((resolve, reject) => {
+    if (!upgradeType) {
+      log.error("升级失败，请使用命令 uni-version -u <patch|minor|major> 进行升级")
+      reject()
+    }
     Promise.allSettled([upgradeManifest(upgradeType), upgradePackage(upgradeType)]).then(res => {
       const [retData] = res; // 获取manifest升级成功与否的消息
       const version = retData.value;
