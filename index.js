@@ -17,6 +17,7 @@ program
   `)
   .option('--no-hooks', '绕过Git的hooks')
   .action((options) => {
+    console.log("options = ", options)
       upgrade(options).then(() => { console.log(); }).catch(() => {
          process.exit(1);
       });
