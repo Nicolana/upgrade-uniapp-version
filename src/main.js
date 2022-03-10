@@ -53,14 +53,14 @@ function getManifestFilePath() {
 }
 
 function upgradeManifest (upgradeType) {
+  console.log("upgradeType = ", upgradeType)
   return new Promise((resolve, reject) => {
     getManifestFilePath().then(manifestPath => {
       // 获取manifest接口
       const rawData = fs.readFileSync(manifestPath, { encoding: 'utf8' });
       const manifestData = Hjson.parse(rawData, { keepWsc: true }); // 解析JSON文件并保留字符串
       const oldVersion = manifestData.versionName;
-      manifestData.versionName = upgrade(manifestData.versionName, upgradeType);
-      console.log(manifestData)
+      manifestData.versionName = upgrade(oldVersion, upgradeType);
       try {
         fs.writeFileSync(manifestPath, Hjson.stringify(manifestData, { keepWsc: true, quotes: "all", separator: true }))
       } catch (err) {
@@ -84,7 +84,6 @@ function upgradePackage(upgradeType) {
     }
     const rawData = fs.readFileSync(packagePath, { encoding: 'utf8' });
     const packageData = Hjson.parse(rawData, { keepWsc: true });
-    console.log(packageData);
     const oldVersion = packageData.version;
     packageData.version = upgrade(oldVersion, upgradeType);
     fs.writeFileSync(packagePath, Hjson.stringify(packageData, { keepWsc: true, quotes: "all", separator: true}))
