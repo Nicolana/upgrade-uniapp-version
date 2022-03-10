@@ -102,6 +102,7 @@ module.exports = ({ upgrade: upgradeType, hooks, }) => {
         utils.commit(`${version}`, hooks).then(() => {
           utils.tag(version).then(() => {
             Promise.all([utils.push(), utils.pushTag()]).then(() => {
+              log.success("升级成功")
               resolve()
             }).catch(() => {
               reject()
