@@ -1,6 +1,6 @@
 {
   "name": "upgrade-uniapp-version",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "Automatically update the version number of uni-app project, then tag and push to the server of Git",
   "main": "index.js",
   "scripts": {
