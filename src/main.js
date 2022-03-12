@@ -62,7 +62,13 @@ function upgradeManifest (upgradeType) {
       const oldVersion = manifestData.versionName;
       manifestData.versionName = upgrade(oldVersion, upgradeType);
       try {
-        fs.writeFileSync(manifestPath, Hjson.stringify(manifestData, { keepWsc: true, quotes: "all", separator: true }))
+        fs.writeFileSync(manifestPath, Hjson.stringify(manifestData, {
+          keepWsc: true,
+          quotes: "all",
+          bracesSameLine: true,
+          separator: true,
+          space: 4,
+        }))
       } catch (err) {
         log.error(err)
         reject(err)
@@ -86,7 +92,13 @@ function upgradePackage(upgradeType) {
     const packageData = Hjson.parse(rawData, { keepWsc: true });
     const oldVersion = packageData.version;
     packageData.version = upgrade(oldVersion, upgradeType);
-    fs.writeFileSync(packagePath, Hjson.stringify(packageData, { keepWsc: true, quotes: "all", separator: true}))
+    fs.writeFileSync(packagePath, Hjson.stringify(packageData, {
+      keepWsc: true,
+      quotes: "all",
+      separator: true,
+      bracesSameLine: true,
+      space: 2,
+    }))
     log.log(`package.json文件版本从 ${chalk.green(oldVersion)} 升级至 ${chalk.green(packageData.version)}`)
     resolve(packageData.version)
   })
