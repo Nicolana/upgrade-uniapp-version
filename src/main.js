@@ -61,6 +61,7 @@ function upgradeManifest (upgradeType) {
       const manifestData = Hjson.parse(rawData, { keepWsc: true }); // 解析JSON文件并保留字符串
       const oldVersion = manifestData.versionName;
       manifestData.versionName = upgrade(oldVersion, upgradeType);
+      manifestData.versionCode = Number(manifestData.versionCode) + 1;
       try {
         fs.writeFileSync(manifestPath, Hjson.stringify(manifestData, {
           keepWsc: true,
